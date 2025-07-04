@@ -1,0 +1,221 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+USER=$(whoami)
+
+export ZSH="/Users/$USER/.oh-my-zsh"
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git 
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Sensirive RC config
+source ~/.config/hrc/.sensitive-rc
+
+# Cursor style 
+# Options 
+# 0 q or 1 q: Blinking block cursor
+# 2 q: Steady block cursor
+# 3 q: Blinking underline cursor
+# 4 q: Steady underline cursor
+# 5 q: Blinking bar cursor
+# 6 q: Steady bar cursor
+echo '\e[5 q'
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#Aliases
+alias castAndroid="scrcpy"
+alias castOculus="scrcpy --crop 1632:1220:100:320 -m 1600 -b 25M"
+alias castOculussmall="scrcpy -m1440 -b 6M --crop 1440:1550:0:0 -n"
+alias castHypernova="scrcpy --stay-awake --no-audio --disable-screensaver --max-size=1024 --max-fps=30 --video-bit-rate=3M"
+alias cpuTemp="sudo powermetrics|grep -i \"CPU die temperature\""
+alias gpuTemp="sudo powermetrics|grep -i \"GPU die temperature\""
+# alias fbDevServer="~/bin/fbdevserver.sh"
+alias calc="bc -e"
+alias dev_prot_remove="sudo spctl --master-disable"
+
+# Custom Variables
+
+export LESS="-Xr"
+
+#Java 11
+#export JAVA_HOME=~/Library/Java/JavaVirtualMachines/jdk11.0.25
+#Java 8
+export JAVA_HOME=~/Library/Java/JavaVirtualMachines/jdk8.0.432
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_BUILD_TOOLS=~/Library/Android/sdk/build-tools/34.0.0
+export NDK_HOME=~/Library/Android/sdk/ndk-bundle
+export GRADLE_USER_HOME=~/.gradle
+export MAVEN_LOCAL_PATH=~/.m2/repository
+export ICAT_PATH=/usr/local/bin
+
+# Android - Defaults
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$JAVA_HOME:$ICAT_PATH:$PATH
+export PATH=$ANDROID_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$MAVEN_LOCAL_PATH:$PATH
+
+# Android - Build tools
+export PATH=$ANDROID_BUILD_TOOLS:$PATH
+
+# Maven
+export APACHE_MAVEN=~/Library/Maven/apache-maven-3.9.9
+export PATH=$APACHE_MAVEN/bin:$PATH
+
+
+## Openssl
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
+## Flutter
+export PATH=$PATH:~/flutter/bin
+
+## VS Code
+export PATH=$PATH:/usr/local/bin/code
+
+## Get My Public IP 
+alias getMyIP="curl ifconfig.me"
+
+## Tmux Aliases and others
+
+alias tmux_sheet="cat ~/Documents/GDocuments/Learning/Unix/tmux/tmux-notes.md"
+export TMUX="/Users/yamil.marques/.tmux/mooo"
+
+## MC Aliases
+
+alias mc_sheet="cat ~/Documents/GDocuments/Learning/Unix/mc/mc_sheet.md"
+alias mce="mcedit --nosubshell"
+alias mcv="mcview --nosubshell"
+alias mc="mc --nosubshell"
+export VIEWER="nvim mc"
+export EDITOR="nvim mc"
+
+## General Aliases
+
+alias cdrive="ncdu"
+alias getIP="curl api.ipify.org" /getip
+
+## FZF Aliases
+alias search="fzf --preview=\"bat --color=always {}\""
+
+# MD file (Markdown viewer)
+alias md="mdless"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Eza (Exa fork)
+alias ls="eza"
+alias ll="eza -alh"
+alias tree="eza --tree"
+
+# Copy and Paste (Clipboard)
+
+# alias ccopy="pbcopy"
+# alias ccpaste="pbpaste"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
